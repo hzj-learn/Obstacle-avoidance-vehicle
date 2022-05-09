@@ -1,0 +1,8 @@
+prefix=/home/hzj/r150-lidar-obstacle-avoidance-master/install
+
+Name: r150_description
+Description: Description of r150_description
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

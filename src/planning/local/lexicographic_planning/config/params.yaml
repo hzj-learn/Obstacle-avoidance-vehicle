@@ -1,0 +1,23 @@
+roboat_planning:
+  # Topics
+  _pointCloudTopic: "velodyne_points"
+
+  # Occupancy Map Params
+  _mapResolution: 0.05
+  _occuMapInflation: 0.3
+  _occuMapField: 0.4
+
+  # Laser scan params
+  _sensorRangeLimitMin: 0
+  _sensorRangeLimitMax: 15.0 
+  _sensorHeightLimitUpper: 0.2
+  _sensorHeightLimitDown: -0.8
+  _sensorCloudTimeout: 5
+
+  # Alternative Path Params
+  _samplingTipMargin: 2.0 # 1.0
+  _samplingOutMargin: 1.0 # 1.0 
+  _pathResolution: 0.2
+  _maxPathDistance: 15.0
+  _rollOutDensity: 0.35
+  _rollOutNumber: 15

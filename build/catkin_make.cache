@@ -1,0 +1,2 @@
+localization/r150_ndt_localizer:navigation/multi_goals_pub:navigation/rf2o_laser_odometry:planning/global/waypoints_manager/waypoint_loader:planning/global/waypoints_manager/waypoint_saver:planning/local/lexicographic_planning:simulation/r150_bringup:simulation/r150_description:simulation/r150_simulation
+-DCATKIN_DEVEL_PREFIX=/home/hzj/r150-lidar-obstacle-avoidance-master/devel -DCMAKE_INSTALL_PREFIX=/home/hzj/r150-lidar-obstacle-avoidance-master/install -G Unix Makefiles

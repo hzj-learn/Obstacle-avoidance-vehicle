@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- r150 simulation environment -->
+  <include file="$(find r150_description)/launch/gazebo.launch"/>
+
+  <!--load map file-->
+  <include file="$(find r150_ndt_localizer)/launch/map_loader.launch" />
+
+  <!-- Points Downsample-->
+  <include file="$(find r150_ndt_localizer)/launch/points_downsample.launch" />
+
+  <!-- NDT Matching-->
+  <include file="$(find r150_ndt_localizer)/launch/ndt_matching.launch" />
+
+  <!-- Waypoints Saver-->
+  <!-- include file="$(find waypoint_saver)/launch/waypoint_saver.launch" /-->
+
+  <!-- rviz-->
+  <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find r150_simulation)/rviz/planning.rviz" /-->
+
+</launch>

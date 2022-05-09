@@ -1,0 +1,8 @@
+prefix=/home/hzj/r150-lidar-obstacle-avoidance-master/devel
+
+Name: waypoint_saver
+Description: Description of waypoint_saver
+Version: 0.0.0
+Cflags: -I/home/hzj/r150-lidar-obstacle-avoidance-master/src/planning/global/waypoints_manager/waypoint_saver/include
+Libs: -L${prefix}/lib -lwaypoint_saver
+Requires: geometry_msgs roscpp tf nav_msgs

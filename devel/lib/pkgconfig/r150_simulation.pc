@@ -1,0 +1,8 @@
+prefix=/home/hzj/r150-lidar-obstacle-avoidance-master/devel
+
+Name: r150_simulation
+Description: Description of r150_simulation
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

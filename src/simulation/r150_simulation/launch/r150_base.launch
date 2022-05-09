@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- r150 simulation environment -->
+  <include file="$(find r150_description)/launch/gazebo.launch"/>
+
+</launch>

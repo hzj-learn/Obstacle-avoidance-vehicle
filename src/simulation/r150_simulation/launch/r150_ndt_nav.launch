@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- r150 simulation environment -->
+  <include file="$(find r150_description)/launch/gazebo.launch"/>
+
+  <!-- lidar odometry -->
+  <include file="$(find rf2o_laser_odometry)/launch/rf2o_laser_odometry.launch"/>
+
+  <!-- EKF  -->
+  <include file="$(find r150_simulation)/launch/r150_ekf_no_tf.launch"/>
+
+  <!--load map file-->
+  <include file="$(find r150_ndt_localizer)/launch/map_loader.launch" />
+
+  <!--points downsample-->
+  <include file="$(find r150_ndt_localizer)/launch/points_downsample.launch" />
+
+  <!--NDT Matching-->
+  <include file="$(find r150_ndt_localizer)/launch/ndt_matching.launch" />
+
+<!-- add map  -->
+  <arg name="map_file" default="$(find r150_simulation)/maps/agriculture_world.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+<!-- DWA Navigation --> 
+  <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
+
+    <rosparam file="$(find r150_simulation)/config/dwa_local_planner/move_base_params.yaml" command="load" />
+    <rosparam file="$(find r150_simulation)/config/dwa_local_planner/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find r150_simulation)/config/dwa_local_planner/costmap_common_params.yaml" command="load" ns="local_costmap" />   
+    <rosparam file="$(find r150_simulation)/config/dwa_local_planner/local_costmap_params.yaml" command="load" />   
+    <rosparam file="$(find r150_simulation)/config/dwa_local_planner/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find r150_simulation)/config/dwa_local_planner/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find r150_simulation)/config/dwa_local_planner/navfn.yaml" command="load" />
+
+    <param name="global_costmap/global_frame" value="map"/>
+    <param name="global_costmap/robot_base_frame" value="base_link"/>
+    <param name="local_costmap/global_frame" value="map"/>
+    <param name="local_costmap/robot_base_frame" value="base_link"/>
+
+  </node>
+
+  <!--multi goals publish-->
+  <include file="$(find multi_goals_pub)/launch/multi_goals_pub.launch" />
+
+  <!-- rviz-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find r150_simulation)/rviz/planning.rviz" />
+
+
+</launch>
